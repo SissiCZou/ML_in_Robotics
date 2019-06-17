@@ -19,15 +19,19 @@ plot(input_x, output_y, '*',input_x,y_predict,'o', input_x, y_predict1,'+');
 legend('original', 'predict', 'predict1');
 
 %%
-% gradient descent 
-%big_X = [ones(n,1) input_x']
-%opt = inv(big_X'*big_X)*big_X'*output_y';
+% or matrixswise 
+big_X = [ones(n,1) input_x']
+opt = inv(big_X'*big_X)*big_X'*output_y';
+x_test = 1;
+y_test = [1,x_test]*opt;
+%% 
+fprintf('*************')
 w = 0;
-for j = 1:2
+for j = 1:10
     alpha = 0.1;
     f_x = w.*input_x;
-    w = w- alpha*(1/n)*sum((f_x - output_y)'.*input_x);
-    fprintf('%d is now after %i itereation \n', w, j);
+    w = w- (1/n)*alpha*sum((f_x - output_y).*input_x);
+    fprintf('The w is %d after %i itereation \n', w, j);
 end
 
 
