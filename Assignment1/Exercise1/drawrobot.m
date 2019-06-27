@@ -7,7 +7,7 @@ function drawrobot( x,y,theta )
     wheel_dia =5; 
     
     %Draw body
-    circl  37ze(x,y,Radius,3,[0 0 1]);  
+    circle(x,y,Radius,3,[0 0 1]);  
 
     %Draw heading_Direction
     circle(x+Radius*0.8*cos(theta),y+Radius*0.8*sin(theta),Radius/10,3,[1 0 0]);
