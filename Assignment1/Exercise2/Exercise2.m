@@ -1,6 +1,4 @@
-%%
-clc
-clear all
+function [min_val,min_ind] = Exercise2(max_d)
 %%
 % load the data 
 train_images = loadMNISTImages('train-images.idx3-ubyte');
@@ -24,7 +22,7 @@ eig_vec = eig_vec(:,ind);
 test_images = test_images - mean_images;
 %%
 % define variables
-max_d = 60;
+%max_d = 60;
 num_class = 10;
 im_mean = cell(1);
 im_norm = cell(1);
@@ -61,12 +59,16 @@ end
 %%
 err = 100*err/n_test; % in percentage
 %%
+figure(1);
+plot(1:max_d, err);
+title('Classification error');
 
 % output the result
 [min_val, min_ind] = min(err);
 fprintf('The minimum error of test result is %.2f%% by d = %i\n',min_val, min_ind);
 % plot confusion matrix
-helperDisplayConfusionMatrix(conf_matrix{min_ind});        
+helperDisplayConfusionMatrix(conf_matrix{min_ind}); 
+end
         
         
         
